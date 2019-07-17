@@ -3,6 +3,21 @@ node_js:
   - "stable"
 services:
   - docker
+env:
+  global:
+    - REGISTRY_USER=suarezgilberto
+    # REGISTRY_PASS=...
+    - secret: "gilans1299"
+script:
+  - docker build --tag react-node-docker-server .
+  - docker run react-node-docker-server
 
-before_install:
-  - docker build -t react-node-docker-server .
+after_script:
+  - docker images
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+deploy:
+  provider: script
+  script: docker push react-node-docker-server
+  on:
+    branch: master
