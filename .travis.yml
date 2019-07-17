@@ -8,7 +8,6 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 script:
   - docker build --tag suarezgilberto/react-node-docker-server .
-  - docker run react-node-docker-server
 
 deploy:
   provider: script
