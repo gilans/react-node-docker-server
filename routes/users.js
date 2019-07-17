@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const redisClient = require('./redis-client');
 
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
