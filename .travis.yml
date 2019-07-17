@@ -6,8 +6,7 @@ services:
 env:
   global:
     - REGISTRY_USER=suarezgilberto
-    # REGISTRY_PASS=...
-    - secret: "gilans1299"
+    - REGISTRY_PASS="gilans1299"
 script:
   - docker build --tag react-node-docker-server .
   - docker run react-node-docker-server
@@ -18,6 +17,6 @@ before_deploy:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 deploy:
   provider: script
-  script: docker push react-node-docker-server
+  script: docker push suarezgilberto/react-node-docker-server
   on:
     branch: master
