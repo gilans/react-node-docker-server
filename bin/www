@@ -7,13 +7,11 @@
 var app = require("../app");
 var debug = require("debug")("api:server");
 var http = require("http");
-var client = require('redis').createClient(process.env.REDIS_URL);
+
 /**
  * Get port from environment and store in Express.
  */
-client.on('connect', function () {
-    console.log('Redis client connected');
-});
+
 var port = normalizePort(process.env.PORT || "8000");
 app.set("port", port);
 
